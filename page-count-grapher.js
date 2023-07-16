@@ -1,11 +1,12 @@
 // Load the Google Sheets API
-Sheetrock.defaults.url = "https://docs.google.com/spreadsheets/d/189tcf-Kk1hjrQxm7ADQMT3rvlRWtIqejAsJYoUYNlso/edit#gid=0";
+Sheetrock.defaults.url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQkg0Q_Y88UiH1hcbr3mYwT6LHWktwnfh8TiILQkYHoTVGZdo5DuEza_K4PY8HnO2DqBnsgx-LT37hx/pubhtml";
 
 // Query parameters
-var myQuery = "select B,C";
+var myQuery = "select B,C FROM 'Sheet1";
 
 // Fetch the data
 Sheetrock({
+  url: Sheetrock.defaults.url,
   query: myQuery,
   callback: showData
 });
