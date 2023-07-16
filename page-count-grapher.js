@@ -1,12 +1,12 @@
-// Load the Google Sheets API
-Sheetrock.defaults.url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQkg0Q_Y88UiH1hcbr3mYwT6LHWktwnfh8TiILQkYHoTVGZdo5DuEza_K4PY8HnO2DqBnsgx-LT37hx/pubhtml";
+// Define the Google Sheets URL
+var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQkg0Q_Y88UiH1hcbr3mYwT6LHWktwnfh8TiILQkYHoTVGZdo5DuEza_K4PY8HnO2DqBnsgx-LT37hx/pubhtml';
 
-// Query parameters
-var myQuery = "select B,C FROM 'Sheet1";
+// Define your query
+var myQuery = 'select B,C';
 
 // Fetch the data
-Sheetrock({
-  url: Sheetrock.defaults.url,
+$('#myTable').sheetrock({
+  url: mySpreadsheet,
   query: myQuery,
   callback: showData
 });
@@ -17,7 +17,8 @@ function showData(error, options, response) {
     var labels = [];
     var data = [];
 
-    for(let i=0; i<response.rows.length; i++) {
+    // Skip the header row
+    for(let i=1; i<response.rows.length; i++) {
       labels.push(response.rows[i].cellsArray[0]);
       data.push(response.rows[i].cellsArray[1]);
     }
